@@ -57,6 +57,7 @@ In order to speed up the comparison of airfoils, we can use panel methods throug
 |4/5| 15 | Maximum Thickness is $15 \%$ Chord |
 
 The NACA 5 Digit Series airfoils (without a reflexed camber line) have their camber line described by the following equation (where the height is specific to chord length):
+
 $$
 z_c =
 \begin{cases}
@@ -70,8 +71,9 @@ $k$ and $r$ are constants that are specific for individual airfoils. In the case
 Before plug-in these values into Thin Airfoil Theory, we should note that an airfoil with a thickness of $15 \%$ chord is pushing the assumptions of a 'thin' airfoil. The most important test, however, is that $a \approx 2 \pi$, which will be validated as a reasonable assumption by both panel methods (XFOIL) and experimental data (for the 23015, not airfoils of $15 \%$ thickness in general).
 
 Recall the fundamental equations of Thin Airfoil Theory:
+
 $$
-c_\ell = 2 \pi \left[ \alpha + \frac{1}{\pi} \int_{0}^{\pi} {\frac{dz}{dx} \left( \cos {\theta}_0 - 1 \right) d {\theta}_0 } \right], \qquad x = \frac{C}{2} \left( 1 - \cos \theta_0 \right)
+c_\ell = 2 \pi \left[\alpha + \frac{1}{\pi} \int_{0}^{\pi} {\frac{dz}{dx} \left( \cos {\theta}_0 - 1 \right) d {\theta}_0 } \right], \qquad x = \frac{C}{2} \left( 1 - \cos \theta_0 \right)
 $$
 
 Because our expression for $z$ is already $z_C$, we can set $C=1$. The fist step is trivially differentiating $z_C$:
@@ -93,25 +95,31 @@ $$
    x = 1 \implies \theta_0 = \cos^{-1} \left( -1 \right) = \pi
 \end{array}
 $$
+
 $$
 \therefore \frac{d z}{dx} = \begin{cases}
     \frac{k}{6} \left( 3 \left( \frac{1}{2} \left( 1 - \cos \theta_0 \right) \right)^2 - 6 r \left( \frac{1}{2} \left( 1 - \cos \theta_0 \right) \right) + r^2 \left( 3 - r \right) \right), & 0 \leq \theta_0 < r' \\
     - \frac{k r^3}{6} , & r' \leq \theta_0 \leq \pi
 \end{cases}
 $$
+
 $$
 = \begin{cases}
     \frac{k}{8} \left( 1 - \cos \theta_0 \right)^2 - \frac{k r}{2} \left( 1 - \cos \theta_0 \right) + \frac{k r^2}{6} \left( 3 - r \right), & 0 \leq \theta_0 < r' \\
     - \frac{k r^3}{6} , & r' \leq \theta_0 \leq \pi
 \end{cases}
 $$
+
 Now we can plug this into our fundamental thin airfoil equation:
+
 $$
 c_\ell = 2 \pi \left[ \alpha + \frac{1}{\pi} \int_{0}^{\pi} {\frac{dz}{dx} \left( \cos {\theta}_0 - 1 \right) d {\theta}_0 } \right] 
 $$
+
 $$
 = 2 \pi \left[ \alpha +\frac{1}{\pi} \int_{0}^{r'} \left[ \frac{k}{8} \left( 1 - \cos \theta_0 \right)^2 - \frac{k r}{2} \left( 1 - \cos \theta_0 \right) + \frac{k r^2}{6} \left( 3 - r \right) \right] \left( \cos {\theta}_0 - 1 \right) d {\theta}_0 + \frac{1}{\pi} \int_{r'}^{\pi} \left[ - \frac{k r^3}{6} \right] \left( \cos {\theta}_0 - 1 \right) d {\theta}_0 \right]
 $$
+
 $$
 = 2 \pi \alpha+ \int_{0}^{r'} \frac{k}{4} \left( \cos {\theta}_0 - 1 \right)^3 + k r \left( \cos {\theta}_0 - 1 \right)^2+ \frac{k r^2}{6} \left( 3 - r \right) \left( \cos {\theta}_0\\- 1 \right) d \theta_0- \int_{r'}^{\pi} \frac{k r^3}{3} \left( \cos {\theta}_0 - 1 \right) d {\theta}_0
 $$
@@ -126,15 +134,15 @@ The code for this is included in the Appendix. We can quite trivially rearrange 
 
 We can plot the thin airfoil algebra result against a computational, panel methods approach from XFOIL:
 
-!['Comparison of Thin Airfoil Theory and Panel Methods from XFOIL[1]'](Thin_v_XFOIL_23015.pdf)
+!['Comparison of Thin Airfoil Theory and Panel Methods from XFOIL[1]'](Thin_v_XFOIL_23015.png)
 
 This result should give us good confidence in using XFOIL in place of more tedious algebra for other airfoils. Using collated XFOIL data[^1], and informed by a chart of the target design parameters of several popular airfoils by Shovel[2], we can produce the following plots:
 
-![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](cL_v_alpha.pdf)
+![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](cL_v_alpha.png)
 
-![XFOIL: $c_D$ v $\alpha$ for popular Airfoils](cD_v_alpha.pdf)
+![XFOIL: $c_D$ v $\alpha$ for popular Airfoils](cD_v_alpha.png)
 
-![XFOIL: $c_L/c_D$ v $\alpha$ for popular Airfoils](CLonCD_v_alpha.pdf)
+![XFOIL: $c_L/c_D$ v $\alpha$ for popular Airfoils](CLonCD_v_alpha.png)
 
 Of course, one should note that the extremis of the XFOIL data (i.e., $|\alpha| > 10^{\circ}$) is *much* less reliable than the data close to $\alpha = 0$. Data is especially unreliable where the XFOIL data is not smooth. We can collate some of this XFOIL data into the following table:
 
@@ -178,7 +186,7 @@ $$
 
 We should compare this to some experimental data. This data, from Anderson's *Fundamentals of Flight*[4], has both section lift and drag coefficients for the 23015. The way this chart is arranged also means we don't need to calculate $\alpha_\text{eff}$ and can just calculate $c_D$ straight from $c_L$.
 
-![Experimental Data for the NACA-23015[4]](Anderson_23015_Diagrams.pdf)
+![Experimental Data for the NACA-23015[4]](Anderson_23015_Diagrams.png)
 
 We can take the slope of this data as $a_0$, and take $\alpha_{L=0}$ from its intercept. We can redo similar calculations to the purely theoretical case as shown.
 
@@ -202,7 +210,7 @@ It shouldn't really be a surprise that the experimental data predicts a lower $C
 
 To account for a finite wing, we need a way of estimating $\delta$. We will use the method proposed by Hörner and evaluated as sound by Nita and Scholz[5]. We can use the following graph (which has been normalised from the original paper with our wing area, $32 \text{m}^2$) to find the appropriate correction factor, $\delta$:
 
-![Hörner $\delta$ estimation[5]](delta_chart.pdf)
+![Hörner $\delta$ estimation[5]](delta_chart.png)
 
 From this diagram we can get $\delta = 0.0623$. We can redo our aerodynamic analysis both for the thin airfoil and experimental case (and compare results!). Starting with the thin airfoil analysis. Assuming $\delta = \tau$:
 
@@ -245,7 +253,7 @@ $$
 
 ## Question 5: High-Lift Device Requirements
 
-**Assume an approach speed of $120 \ \text{km/h}$ (for landing) [$50$ knot stall speed $\times \ 1.3$ margin]. Given your wing design, specify a high-lift device requirement (specify $\Delta C_L$).**
+**Assume an approach speed of $120 \ \text{km/h}$ (for landing) [$ 50 $ knot stall speed $\times \ 1.3$ margin]. Given your wing design, specify a high-lift device requirement (specify $\Delta C_L$).**
 
 We will assume the landing weight is the same as the MTOW (i.e., no fuel weight loss in flight and no need for fuel dumping to land) and that we will be landing at sea level $\text{Alt} = 0$ (which is a fine assumption for Australia, but not Nepal or Colorado, for example):
 
