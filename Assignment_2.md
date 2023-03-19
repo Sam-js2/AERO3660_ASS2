@@ -144,7 +144,7 @@ This result should give us good confidence in using XFOIL in place of more tedio
 
 ![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](CL_v_alpha.png)
 
-> **Figure 3:** Comparrison of Airfoils $c_L$ v $\alpha$
+> **Figure 3:** Comparison of Airfoils $c_L$ v $\alpha$
 
 ![XFOIL: $c_D$ v $\alpha$ for popular Airfoils](cD_v_alpha.png)
 
@@ -294,21 +294,23 @@ $$
 \therefore \Delta C_L = 0.852
 $$
 
-It should be noted that this $\Delta C_L$ doesn't have to come *entirely* from high-lift devices, and adjusting the angle of attack and flaring the aircraft for landing can contribute a significant ammount to this.
+It should be noted that this $\Delta C_L$ doesn't have to come *entirely* from high-lift devices, and adjusting the angle of attack and flaring the aircraft for landing can contribute a significant amount to this.
 
 ## References / Appendix
 
-[1] Collated XFOIL Data
+[1] Collated XFOIL Data from 
 
 [2]  Shovel, R.S., *Fundamentals of Flight*, Prentice Hall, 2nd edn, 1989.
 
-[3] https://m-selig.ae.illinois.edu/ads/aircraft.html
+[3] Lednicer, D, *The Incomplete Guide to Airfoil Usage*, The University of Illinois Urbana-Champaign Department of Aerospace Engineering & Aeromechanical Solutions LLC, September 2010 accessed March 2023, available [here](https://m-selig.ae.illinois.edu/ads/aircraft.html).
 
 [4] Anderson J.D., *Fundamentals of Aerodynamics*, McGraw Hill Education, 6th edn, 2017, p. 425.
 
-[5] https://www.dglr.de/publikationen/2012/281424.pdf
+[5] Sholz D. & Niţǎ, M.,  *Estimating the Oswald Factor from Basic Aircraft Geometrical Parameters*, 2012, available through open access [here](https://www.dglr.de/publikationen/2012/281424.pdf).
 
-Raymer Aircraft Design, 6e
+Raymer D.P., *Aircraft Design: A Conceptual Approach*, American Institute of Aeronautics and Astronautics, 6th edn, 2018.
+
+XFOIL 6.99 from MIT (accessible [here](https://web.mit.edu/drela/Public/web/xfoil/)) was used running under a virtual machine.
 
 The MATHEMATICA code to perform that integration is here:
 
@@ -326,4 +328,4 @@ The MATHEMATICA code to perform that integration is here:
     TAFT[\[Alpha], 0.2025, 15.957]
 
 
-Everything else (all python code for graphic, XFOIL data, diagrams exe) can be found here on GitHub.
+Everything else (all python code for graphic, XFOIL data, diagrams exe) can be found [here](https://github.com/Sam-js2/AERO3660_ASS2) on GitHub.
