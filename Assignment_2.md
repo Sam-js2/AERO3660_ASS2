@@ -33,7 +33,9 @@ For Assignment 1 I opted for a tapered planform (taper ratio $\lambda = 0.4$) wi
 | **Outer Chord**                                              | 1.02 m                   | Consequence of Wing Area, Aspect Ratio and $\gamma$                        |
 | **Wing Tip**                                                    |  Winglet                  | Winglets reduce drag by reducing induced drag at wing tips, could also use other appropriate tips                                                          |
 
-![Planform Diagram](ass1_planform.pdf)
+![Planform Diagram](ass1_planform.png)
+
+> **Figure 1:** Planform Diagram
 
 To reiterate: I am extremely happy with my design selection and the knowledge I have gained on wing design since submitting Assignment 1 has only reinforced this.
 
