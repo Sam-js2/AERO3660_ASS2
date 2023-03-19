@@ -10,12 +10,14 @@ For Assignment 1 I opted for a tapered planform (taper ratio $\lambda = 0.4$) wi
 
 > **Table 1:** Cruise Parameters Assigned for Assignment 1
 
-| **MTOW (kg)\***                                             | 2,558 kg                          |
+| **Parameter                                                 | **Value**
 | ----------------------------------------------------------- | --------------------------------- |
+| **MTOW (kg)\***                                             | 2,558 kg                          |
 | **Cruising Mach Number\***                                  | 0.22                              |
 | **Cruising Altitude\***                                     | 2,135 m / c. 7,000 ft             |
-| **Cruising Velocity†**                                      | 73 ms<sup>\-1</sup> / c. 263 km/h |
- \*Provided, † Derived from Provided and Standard Atmosphere 
+| **Cruising Velocity†**                                      | 73 m s<sup>-1</sup> / c. 263 km/h        |
+
+\*Provided, † Derived from Provided and Standard Atmosphere 
 
 
 > **Table 2:** Design Choices and Reasoning for Assignment 1
@@ -24,8 +26,8 @@ For Assignment 1 I opted for a tapered planform (taper ratio $\lambda = 0.4$) wi
 | ------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Planform**                                                     | Tapered                         | Compromise of performance (elliptical planform) and manufacturability (rectangular planform)                                                               |
 | **Wing Area**                                                   | 32 m<sup>2</sup>       | Minimum (as to reduce drag) with reasonable $C_L$                         |
-| **Wing Loading**                                             | 78.94 kg m<sup>\-2</sup> | Reasonable value; consequence of choosing Wing Area to get a good $C_L$ |
-| **Coefficient of Lift**                                        | 0.30                     | Maximum reasonable value                                                                                                                                   |
+| **Wing Loading**                                             | 78.94 kg m<sup>-2</sup> | Reasonable value; consequence of choosing Wing Area to get a good $C_L$ |
+| **Coefficient of Lift** **$C_L$**                                       | 0.30                     | Maximum reasonable value                                                                                                                                   |
 | **Aspect Ratio**                                              | 10                       | Large value to match market trends of more efficient aircraft; disadvantages in climb speed performance less applicable with low ceiling                   |
 | **Taper Ratio** **$\lambda$**                         | 0.4                      | Standard recommended value for subsonic wings                                                                                                              |
 | **Wing Span**                                                 | 17.89 m                  | Consequence of Wing Area and Aspect Ratio                                                                                                                  |
@@ -121,7 +123,7 @@ $$
 $$
 
 $$
-= 2 \pi \alpha+ \int_{0}^{r'} \frac{k}{4} \left( \cos {\theta}_0 - 1 \right)^3 + k r \left( \cos {\theta}_0 - 1 \right)^2+ \frac{k r^2}{6} \left( 3 - r \right) \left( \cos {\theta}_0\\- 1 \right) d \theta_0- \int_{r'}^{\pi} \frac{k r^3}{3} \left( \cos {\theta}_0 - 1 \right) d {\theta}_0
+= 2 \pi \alpha+ \int_{0}^{r'} \frac{k}{4} \left( \cos {\theta}_0 - 1 \right)^3 + k r \left( \cos {\theta}_0 - 1 \right)^2+ \frac{k r^2}{6} \left( 3 - r \right) \left( \cos {\theta}_0- 1 \right) d \theta_0- \int_{r'}^{\pi} \frac{k r^3}{3} \left( \cos {\theta}_0 - 1 \right) d {\theta}_0
 $$
 
 This can't be easily simplified further (it can be done, but it gets large quickly). We will use computational methods in a CAS (Computer Algebraic System) package to evaluate this integral for the NACA 23015. I decided to use MATHEMATICA, but I did verify the result in Maple. MATHEMATICA yields:
@@ -134,15 +136,23 @@ The code for this is included in the Appendix. We can quite trivially rearrange 
 
 We can plot the thin airfoil algebra result against a computational, panel methods approach from XFOIL:
 
-!['Comparison of Thin Airfoil Theory and Panel Methods from XFOIL[1]'](Thin_v_XFOIL_23015.png)
+![Comparison of Thin Airfoil Theory and Panel Methods from XFOIL[1]](Thin_v_XFOIL_23015.png)
+
+> **Figure 2:** Comparison of Thin Airfoil Theory and Panel Methods from XFOIL[1]
 
 This result should give us good confidence in using XFOIL in place of more tedious algebra for other airfoils. Using collated XFOIL data[^1], and informed by a chart of the target design parameters of several popular airfoils by Shovel[2], we can produce the following plots:
 
 ![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](cL_v_alpha.png)
 
+> **Figure 3:** Comparrison of Airfoils $c_L$ v $\alpha$
+
 ![XFOIL: $c_D$ v $\alpha$ for popular Airfoils](cD_v_alpha.png)
 
+> **Figure 4:** Comparison of Airfoils c_D v $\alpha$
+
 ![XFOIL: $c_L/c_D$ v $\alpha$ for popular Airfoils](CLonCD_v_alpha.png)
+
+> **Figure 5:** Comparison of Airfoils $\frac{c_L}{c_D}$ v $\alpha$
 
 Of course, one should note that the extremis of the XFOIL data (i.e., $|\alpha| > 10^{\circ}$) is *much* less reliable than the data close to $\alpha = 0$. Data is especially unreliable where the XFOIL data is not smooth. We can collate some of this XFOIL data into the following table:
 
@@ -171,6 +181,7 @@ With an infinite wing (which you could alternatively view as a wing with $\text{
 $$
 C_L = 0.30 = 2 \pi \alpha + 0.159527
 $$
+
 $$
 \therefore \alpha = 0.022357 = 1.28^{\circ}
 $$
@@ -180,6 +191,7 @@ We already assumed $\text{Thin Airfoil} \implies a = 2 \pi$ when we used thin ai
 $$
 \text{Infinite Span} \implies \text{AR} = \infty, \qquad \therefore C_{D,i} = \frac{C_L^2}{\pi \text{AR}} \left(1 + \delta \right) = 0, \qquad \therefore \alpha_\text{eff} = \frac{C_L}{\pi \text{AR}} = 0
 $$
+
 $$
 C_D = c_D + C_{D,i} = c_D, \qquad c_D = 0.008 \text{ from XFOIL}, \qquad \therefore C_D = 0.008
 $$
@@ -188,16 +200,20 @@ We should compare this to some experimental data. This data, from Anderson's *Fu
 
 ![Experimental Data for the NACA-23015[4]](Anderson_23015_Diagrams.png)
 
+> **Figure 6:** Experimental Data for the NACA-23015 from Anderson's *Fundamentals of Aerodynamics*[4]
+
 We can take the slope of this data as $a_0$, and take $\alpha_{L=0}$ from its intercept. We can redo similar calculations to the purely theoretical case as shown.
 
 $$
 \text{Infinite Wing} \implies a = a_0 = 5.96 \text{ Radians}, \quad \alpha_{L=0} = - 1.14^{\circ} \qquad \text{From Graph}
 $$
+
 $$
 C_L = a_0 \left( \alpha - \alpha_{L=0} \right), \qquad = 0.30 = 5.96 \left( \alpha + 1.14^{\circ} \right), \qquad \therefore \alpha = 1.74^{\circ}
 $$
 
 We can quickly calculate drag, similarly to before:
+
 $$
 \text{Infinite Wing} \implies C_{D,i} = 0, \qquad \therefore C_D = c_D = 0.006 \text{ From Graph}
 $$
@@ -212,21 +228,28 @@ To account for a finite wing, we need a way of estimating $\delta$. We will use 
 
 ![Hörner $\delta$ estimation[5]](delta_chart.png)
 
+> **Figure 6:** Normalised Hörner approximation of $\delta$[5]
+
 From this diagram we can get $\delta = 0.0623$. We can redo our aerodynamic analysis both for the thin airfoil and experimental case (and compare results!). Starting with the thin airfoil analysis. Assuming $\delta = \tau$:
 
 $$
 \text{Thin Airfoil} \implies a_0 = 2 \pi, \qquad a = \frac{a_0}{1 + \frac{a_0}{\pi \text{AR}}\times \left( 1 + \delta \right)} = \frac{2 \pi}{1 + \frac{2 \pi}{\text{10 }\pi}\times \left( 1 + 0.0623 \right)} = 5.18
 $$
+
 $$
 C_L = 0.30 = 5.18 \left( \alpha  - 0.025 \right), \qquad \therefore \alpha = 0.033 = 1.86^{\circ}
 $$
+
 We can also recalculate drag, using an XFOIL $c_D$ from $\alpha_\text{eff}$ and a non-zero $C_{D,i}$:
+
 $$
 C_{D,i} = \frac{C_L^2}{\pi \text{AR}} \times \left( \delta + 1 \right) = \frac{0.30^2}{10 \pi} \times 1.0623 = 0.0029
 $$
+
 $$
 \alpha_\text{eff} = \frac{C_L}{\pi \text{AR}}  = \frac{0.30}{10 \pi} = 0.00955 = 0.547^{\circ}, \qquad \therefore c_D = 0.008
 $$
+
 $$
 C_D = c_D + C_{D,i} = 0.008 + 0.0029 = 0.011
 $$
@@ -238,6 +261,7 @@ We can similarly recalculate $C_D$ and $C_L$ for our experimental model, using t
 $$
  a = \frac{a_0}{1 + \frac{a_0}{\pi \text{AR}}\times \left( 1 + \delta \right)} = \frac{5.96}{1 + \frac{5.96}{\text{10 }\pi}\times \left( 1.0623 \right)} = 2.97
 $$
+
 $$
 \therefore 0.30 = 2.97 \left( \alpha + 1.14^{\circ} \right), \qquad \alpha = 0.0812 = 4.65^\circ
 $$
@@ -247,6 +271,7 @@ We can also calculate a new coefficient of drag, using $c_D$ at $c_L = 0.3$ from
 $$
 C_{D,i} = \frac{C_L^2}{\pi \text{AR}} \times \left(1 + \delta \right) = \frac{0.30^2}{10 \pi} \times 1.0623 = 0.015
 $$
+
 $$
 C_D = C_{D, i} + c_D = 0.015 + 0.006, \qquad C_D = 0.021 
 $$
@@ -260,9 +285,11 @@ We will assume the landing weight is the same as the MTOW (i.e., no fuel weight 
 $$
 F_L = F_W, \qquad mg = \frac{1}{2} \rho A V^2 \left( C_L + \Delta C_L \right)
 $$
+
 $$
 2558 \times 9.81 = 0.5 \times 1.225 \times 32 \times 33.\overline{3} ^2 \times \left( 0.3 + \Delta C_L \right)
 $$
+
 $$
 \therefore \Delta C_L = 0.852
 $$
@@ -299,4 +326,4 @@ The MATHEMATICA code to perform that integration is here:
     TAFT[\[Alpha], 0.2025, 15.957]
 
 
-Everything else (all python code for graphic, XFOIL data, diagrams exe) can be found on OneDrive **here**.
+Everything else (all python code for graphic, XFOIL data, diagrams exe) can be found here on GitHub.
