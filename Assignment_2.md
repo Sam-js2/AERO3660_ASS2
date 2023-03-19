@@ -10,12 +10,12 @@ For Assignment 1 I opted for a tapered planform (taper ratio $\lambda = 0.4$) wi
 
 > **Table 1:** Cruise Parameters Assigned for Assignment 1
 
-| **Parameter                                                 | **Value**
+| **Parameter**                                               | **Value**
 | ----------------------------------------------------------- | --------------------------------- |
 | **MTOW (kg)\***                                             | 2,558 kg                          |
 | **Cruising Mach Number\***                                  | 0.22                              |
 | **Cruising Altitude\***                                     | 2,135 m / c. 7,000 ft             |
-| **Cruising Velocity†**                                      | 73 m s<sup>-1</sup> / c. 263 km/h        |
+| **Cruising Velocity†**                                      | 73 m s<sup>-1</sup> / c. 263 km/h |
 
 \*Provided, † Derived from Provided and Standard Atmosphere 
 
