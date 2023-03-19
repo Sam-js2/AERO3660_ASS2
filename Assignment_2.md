@@ -142,7 +142,7 @@ We can plot the thin airfoil algebra result against a computational, panel metho
 
 This result should give us good confidence in using XFOIL in place of more tedious algebra for other airfoils. Using collated XFOIL data[^1], and informed by a chart of the target design parameters of several popular airfoils by Shovel[2], we can produce the following plots:
 
-![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](cL_v_alpha.png)
+![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](CL_v_alpha.png)
 
 > **Figure 3:** Comparrison of Airfoils $c_L$ v $\alpha$
 
