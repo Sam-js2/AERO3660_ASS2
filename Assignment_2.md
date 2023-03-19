@@ -164,7 +164,7 @@ Of course, one should note that the extremis of the XFOIL data (i.e., $|\alpha| 
 |**NACA 2415**|$0.40$|$-2.20^{\circ}$| $89.89$ | $\approx 1$ |  Some Cessna and a lot of Failed Northrop naval prototypes|
 |**NACA 23012**|$0.23$|$-1.25^{\circ}$| $93.68$ | $\approx 1$ | Beech King Air & Baron, Bell 30 (Bell's first Helicopter) |
 |**NACA 23015**|$0.045$|$-1.20^{\circ}$| $91.35$ | $\approx 1$ | BAC Strikemaster, CAC Avon Sabre, Piper PA-46|
-|**NACA 65$_\text{2}$-418**|$0.20$|$-3.05^{\circ}$| $101.9$ | $\approx 1$ |BAC Jetstream, DeHavilland Dash 7 |
+|**NACA 65<sub>2</sub>-418**|$0.20$|$-3.05^{\circ}$| $101.9$ | $\approx 1$ |BAC Jetstream, DeHavilland Dash 7 |
 
 All these airfoils appear to behave close to thin airfoils (that is, $a \approx 2 \pi$). It is quite obvious that these datapoints don't tell the entire story, and the characteristics from the diagrams also need to be considered.
 
