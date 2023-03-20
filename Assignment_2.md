@@ -140,7 +140,7 @@ We can plot the thin airfoil algebra result against a computational, panel metho
 
 > **Figure 2:** Comparison of Thin Airfoil Theory and Panel Methods from XFOIL[1]
 
-This result should give us good confidence in using XFOIL in place of more tedious algebra for other airfoils. Using collated XFOIL data[^1], and informed by a chart of the target design parameters of several popular airfoils by Shovel[2], we can produce the following plots:
+This result should give us good confidence in using XFOIL in place of more tedious algebra for other airfoils. Using collated XFOIL data[1], and informed by a chart of the target design parameters of several popular airfoils by Shovel[2], we can produce the following plots:
 
 ![XFOIL: $c_L$ v $\alpha$ for popular Airfoils](CL_v_alpha.png)
 
@@ -228,7 +228,7 @@ To account for a finite wing, we need a way of estimating $\delta$. We will use 
 
 ![Hörner $\delta$ estimation[5]](delta_chart.png)
 
-> **Figure 6:** Normalised Hörner approximation of $\delta$[5]
+> **Figure 7:** Normalised Hörner approximation of $\delta$[5]
 
 From this diagram we can get $\delta = 0.0623$. We can redo our aerodynamic analysis both for the thin airfoil and experimental case (and compare results!). Starting with the thin airfoil analysis. Assuming $\delta = \tau$:
 
