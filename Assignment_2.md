@@ -168,9 +168,9 @@ Of course, one should note that the extremis of the XFOIL data (i.e., $|\alpha| 
 
 All these airfoils appear to behave close to thin airfoils (that is, $a \approx 2 \pi$). It is quite obvious that these datapoints don't tell the entire story, and the characteristics from the diagrams also need to be considered.
 
-The NACA 65$_\text{2}$-418 has a very extreme $\alpha$
+The NACA 65<sub>2</sub>-418 has a relatively extreme $\alpha_{L=0}$ and has much more complex $\frac{L}{D}$ behaviour than the 4 and 5 digit series'. The 2412 has similar issues to the 65<sub>2</sub>-418, as evidenced by the $\frac{C_L}{C_D}$ graph, and the 2415 doesn't perform as well in terms of $\frac{L}{D}$ when compared to the 23015 and 23012.
 
-# Justify 23015 Selection
+We will choose the 23015 over the 23012 because of the sharp drop-off on the $C_L$ v $\alpha$ graph for the 23012 (as predicted by XFOIL). This translates to significantly worse stall characteristics compared to the 23015, meaning the aircraft would be expected to stall quicker and more violently. 
 
 ## Question 3: Cruise Angle of Attack Selection
 
